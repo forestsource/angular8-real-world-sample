@@ -140,7 +140,9 @@
     "completed-docs": false,
     "no-magic-numbers": [true],
     "number-literal-format": true,
-    "no-irregular-whitespace": true
+    "no-irregular-whitespace": true,
+    "no-submodule-imports": false, // TODO: Declare minimal submodule
+    "space-before-function-paren": false
   },
   "extends": [
     "tslint:latest",

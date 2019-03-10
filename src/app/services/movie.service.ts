@@ -2,22 +2,20 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { Movie } from './movie';
 import { MOVIES } from './mockes/mock-movies';
-
+import { Movie } from './movie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-
-  constructor() { }
+  constructor() {}
 
   getMovies(): Observable<Movie[]> {
-      return of(MOVIES)
+    return of(MOVIES);
   }
 
   getMovie(id: number): Observable<Movie> {
-      return of(MOVIES.find(movie => movie.id === id))
+    return of(MOVIES.find(movie => movie.id === id));
   }
 }
