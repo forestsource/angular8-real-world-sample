@@ -22,13 +22,19 @@
     <!--
     <img class="movie-thumbnail" src="../../assets/images/mock.jpg" alt="movie-image">
     -->
-    <div
-      class="max-box"
-      matRipple
-      [matRippleCentered]=true
-      [matRippleColor]="blue"
-    >
-      <mat-card></mat-card>
+    <div class="max-box" matRipple [matRippleCentered]="true">
+      <mat-card>
+        <mat-card-header>
+          {{ movie.title }}
+        </mat-card-header>
+        <mat-card-content>
+          <img
+            class="auto-resize"
+            src="{{ movie.thumbnail }}"
+            alt="movie-image"
+          />
+        </mat-card-content>
+      </mat-card>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
