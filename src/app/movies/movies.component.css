@@ -1,0 +1,17 @@
+.movie-thumbnail {
+    width: 5%;
+    height: 5%;
+}
+
+.movie-box {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* custom */
+.max-box {
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/images/mock.jpg");
+  background-size: cover;
+}
