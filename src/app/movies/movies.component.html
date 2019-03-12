@@ -1,40 +1,17 @@
-<h2>Movies</h2>
-<!--
-<ul class='movies'>
-    <li *ngFor="let movie of movies">
-        <a routerLink="/movies/{{movie.id}}">
-            <div class='movie_link'>
-                <p>{{movie.title}}</p>
-                <img class="movie-thumbnail" src="assets/images/mocka.jpg">
-            </div>
-        </a>
-    </li>
-</ul>
--->
-
-<mat-grid-list cols="12">
-  <mat-grid-tile
-    class="movie-box"
-    *ngFor="let movie of movies"
-    [colspan]="2"
-    [rowspan]="2"
-  >
-    <!--
-    <img class="movie-thumbnail" src="../../assets/images/mock.jpg" alt="movie-image">
-    -->
-    <div class="max-box" matRipple [matRippleCentered]="true">
-      <mat-card>
-        <mat-card-header>
+<mat-grid-list cols="12" rowHeight="1:1" [gutterSize]="10">
+  <mat-grid-tile *ngFor="let movie of movies" [colspan]="3" [rowspan]="3">
+    <div matRipple [matRippleCentered]="true">
+      <mat-card class="white-smoke">
+        <mat-card-header> </mat-card-header>
+        <img mat-card-sm-image src="{{ movie.thumbnail }}" alt="movie-image" />
+        <mat-card-content> </mat-card-content>
+        <mat-card-footer class="text-center">
           {{ movie.title }}
-        </mat-card-header>
-        <mat-card-content>
-          <img
-            class="auto-resize"
-            src="{{ movie.thumbnail }}"
-            alt="movie-image"
-          />
-        </mat-card-content>
+        </mat-card-footer>
       </mat-card>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+
+<mat-paginator [length]="movies.length" [pageSize]="30" [hidePageSize]="false">
+</mat-paginator>

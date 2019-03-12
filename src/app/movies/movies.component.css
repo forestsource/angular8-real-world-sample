@@ -1,15 +1,27 @@
-.movie-box {
-  color: white;
-  opacity: 100%;
+img{
+  background-color: white;
 }
 
-.auto-resize {
-  width: 100%;
-  height: auto;
+.text-center {
+  text-align: center;
 }
 
-/* custom */
-.max-box {
-  height: 100%;
-  width: 100%;
+.white-smoke {
+  background-color: whitesmoke;
+}
+
+.margin5 {
+  margin: 5px;
+}
+
+.margin1 {
+  margin: 1%;
+}
+
+.padding5{
+  margin: 5px;
+}
+
+.padding1{
+  margin: 1%;
 }
