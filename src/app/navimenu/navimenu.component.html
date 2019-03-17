@@ -1,0 +1,99 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span mat-icon-button routerLink="/dashboard">
+      <mat-icon inline>local_movies</mat-icon>
+      <span>hululu</span>
+    </span>
+
+    <span class="menu-space"></span>
+
+    <!-- home -->
+    <button mat-icon-button routerLink="/dashboard">
+      <mat-icon fontSet="fa" fontIcon="fa-home" inline>
+        <span>ホーム</span>
+      </mat-icon>
+    </button>
+
+    <span class="menu-space"></span>
+
+    <!-- movies -->
+    <button mat-icon-button [matMenuTriggerFor]="movies">
+      <mat-icon fontSet="fa" fontIcon="fa-video" inline>
+        <span>ムービー</span>
+        <mat-icon inline>arrow_drop_down</mat-icon>
+      </mat-icon>
+    </button>
+    <mat-menu #movies="matMenu">
+      <button mat-menu-item routerLink="/movies?sort=date">
+        <mat-icon fontSet="fa" fontIcon="fa-clock" inline>
+          <span>新着動画</span>
+        </mat-icon>
+      </button>
+      <button mat-menu-item routerLink="/movies?sort=favorite">
+        <mat-icon fontSet="fa" fontIcon="fa-angle-double-up" inline>
+          <span>人気動画</span>
+        </mat-icon>
+      </button>
+      <button mat-menu-item [mat-menu-trigger-for]="genres">
+        <mat-icon fontSet="fa" fontIcon="fa-th" inline>
+          <span>ジャンル</span>
+        </mat-icon>
+      </button>
+    </mat-menu>
+
+    <!-- detail genres -->
+    <mat-menu #genres="matMenu">
+      <button mat-menu-item routerLink="/movies?genres=drama">
+        <mat-icon fontSet="fa" fontIcon="fa-th" inline>
+        <span>ドラマ</span>
+        </mat-icon>
+      </button>
+      <button mat-menu-item routerLink="/movies?genres=comedy">
+        <mat-icon fontSet="fa" fontIcon="fa-th" inline>
+          <span>お笑い</span>
+        </mat-icon>
+      </button>
+      <button mat-menu-item routerLink="/movies?genres=news">
+        <mat-icon fontSet="fa" fontIcon="fa-th" inline>
+          <span>ニュース</span>
+        </mat-icon>
+      </button>
+    </mat-menu>
+
+    <span class="menu-space"></span>
+
+    <!-- search -->
+    <button mat-icon-button routerLink="/search">
+      <mat-icon fontSet="fa" fontIcon="fa-search" inline>
+        <span>探す</span>
+      </mat-icon>
+    </button>
+
+
+    <!-- spacer -->
+    <span class="mat-toolbar-space"></span>
+
+    <!-- notify -->
+    <button mat-icon-button [matMenuTriggerFor]="notify">
+      <mat-icon fontSet="fa" fontIcon="fa-bell" inline>
+        <mat-icon inline>arrow_drop_down</mat-icon>
+      </mat-icon>
+    </button>
+    <mat-menu #notify="matMenu">
+      <p>新着連絡</p>
+    </mat-menu>
+
+    <!-- profile -->
+    <button mat-icon-button routerLink="/profile">
+      <mat-icon fontSet="fa" fontIcon="fa-user-circle" inline> </mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+  <!-- 2row -->
+  <mat-toolbar-row class="subtitle">
+    <h2>
+      <mat-icon fontSet="fa" fontIcon="fa-home" inline> </mat-icon>
+      ホーム
+    </h2>
+  </mat-toolbar-row>
+</mat-toolbar>

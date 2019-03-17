@@ -1,0 +1,20 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.mat-toolbar-space {
+  flex: 1 1 auto;
+}
+
+.menu-space {
+  flex:0.5 0.5 auto;
+}
+
+.title {
+  background-color: white;
+  color: Black;
+  border-bottom-style: solid;
+  border-bottom-color: gray;
+}
+
+.subtitle {
+  background-color: white;
+}
