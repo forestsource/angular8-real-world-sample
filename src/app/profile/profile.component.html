@@ -1,3 +1,41 @@
-<p>
-  profile works!
-</p>
+<form (ngSubmit)="onSubmit()">
+    <div class="login_id">
+        <mat-form-field>
+            <mat-label>Login ID</mat-label>
+            <input matInput placeholder="Enter your email"
+                   [value]="profile.login_id"
+                   [formControl]="formControls['login_id']"
+                   required>
+            <mat-error *ngIf="formControls['login_id'].hasError('required')">invalid email format.</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="password">
+        <mat-form-field>
+            <input matInput placeholder="Enter your password"
+                   [type]="password_hide ? 'password' : 'text'"
+                   [value]="profile.password"
+            required>
+            <mat-icon matSuffix
+                      (click)="password_hide = !password_hide">{{password_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="profile">
+        <mat-form-field>
+            <textarea matInput placeholder="profile" [value]="profile.profile"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="lang">
+        <mat-form-field>
+            <mat-label>Language</mat-label>
+            <mat-select [(value)]="profile.language" required>
+                <mat-option value="ja_JP">Japanese</mat-option>
+                <mat-option value="en_US">English</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
