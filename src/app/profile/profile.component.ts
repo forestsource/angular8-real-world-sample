@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, Form } from '@angular/forms';
 
 import { Profile } from '../services/profile';
 import { ProfileService } from '../services/profile.service';
@@ -10,56 +10,70 @@ import { ProfileService } from '../services/profile.service';
   styleUrls: ['./profile.component.css']
 })
 
-// class ProfileErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted))
-//   }
-// }
-
 export class ProfileComponent implements OnInit {
 
-  constructor() {}
+  constructor() {
+  }
 
   profile: Profile;
   id = 1;
   password_hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
 
-  formControls: { [key: string]: FormControl; } = {};
+  profileForm: FormGroup;
 
   ngOnInit() {
-    console.log("init");
+    console.log('init');
     this.initFormControl();
     this.getProfile();
   }
 
   initFormControl() {
-    this.formControls['login_id'] = new FormControl('', [
+    this.profileForm = new FormGroup({
+      loginId: new FormControl('', [
         Validators.required,
-        Validators.pattern("[^ @]*@[^ @]*")
+        Validators.pattern('[^ @]*@[^ @]*'),
+        Validators.maxLength(30)
       ]),
-    this.formControls['password'] = new FormControl('', [
+      password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(8)
+      ]),
+      profile: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255)
+      ]),
+      language: new FormControl('', [
+        Validators.required
       ])
+    });
   }
 
-  getProfile(): void{
-    ProfileService.getProfile(this.id).subscribe(profile => (this.profile = profile));
-    console.log("getProfile");
-    console.log(this.profile);
+  hasError(controlName: string, errorName: string): boolean {
+    return this.profileForm.controls[controlName].hasError(errorName);
   }
 
-  // getErrorMessage() {
-  //   return this.email.hasError('required') ? 'You must enter a value' :
-  //     this.email.hasError('email') ? 'Not a valid email' :
-  //       '';
-  // }
+  getProfile(): void {
+    ProfileService.getProfile(this.id).subscribe(profile => (this.setValues(profile)));
+    console.log('getProfile');
+  }
 
-  onSubmit(){
-    console.log("submit");
-    console.log(this.profile);
-    ProfileService.putProfile(this.profile).subscribe(profile => (this.profile = profile));
+  setValues(profile: Profile): void {
+    this.profileForm.patchValue(profile);
+  }
+
+  onSubmit() {
+    console.log('submit');
+    let profile = this.formToModel(this.profileForm);
+    console.log(profile);
+    ProfileService.putProfile(profile).subscribe(profile => (console.log('update')));
+  }
+  private formToModel(form: FormGroup): Profile {
+    return new Profile(
+      null,
+      form.get('loginId').value,
+      form.get('password').value,
+      form.get('profile').value,
+      form.get('language').value
+    );
   }
 }
