@@ -12,8 +12,9 @@ import { ProfileService } from '../services/profile.service';
 
 export class ProfileComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor(
+    private profileService: ProfileService
+  ) {}
 
   profile: Profile;
   id = 1;
@@ -65,8 +66,9 @@ export class ProfileComponent implements OnInit {
     console.log('submit');
     let profile = this.formToModel(this.profileForm);
     console.log(profile);
-    ProfileService.putProfile(profile).subscribe(profile => (console.log('update')));
+    this.profileService.putProfile(profile).subscribe(profile => (console.log('update')));
   }
+
   private formToModel(form: FormGroup): Profile {
     return new Profile(
       null,
