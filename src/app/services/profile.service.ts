@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 
 import { myProfile } from './mockes/mock-profile';
 import { Profile } from './profile';
-import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
+import { HttpClient } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,14 +20,10 @@ const httpOptions = {
 })
 export class ProfileService {
   profileUrl = '/profile';
-  handleError: HandleError;
 
   constructor(
-    private http: HttpClientModule,
-    httpErrorHandler: HttpErrorHandler
-  ) {
-    this.handleError = httpErrorHandler.createHandleError('ProfileService');
-  }
+    private http: HttpClient,
+  ) {}
 
   static getProfile(id: number): Observable<Profile> {
     return of(myProfile);
@@ -37,8 +33,5 @@ export class ProfileService {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
     return this.http.put<Profile>(this.profileUrl, profile, httpOptions)
-      .pipe(
-        catchError(this.handleError('updateProfile', profile))
-      );
   }
 }

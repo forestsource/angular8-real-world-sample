@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- import { PageEvent } from '@angular/material';
+ import { PageEvent } from '@angular/material/paginator';
 
  import { Movie } from '../services/movie';
  import { MovieService } from '../services/movie.service';
