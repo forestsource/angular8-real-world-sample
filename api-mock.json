@@ -1,0 +1,8 @@
+{
+  "profile": {
+    "loginId": "test@example.jp",
+    "password": "secure_password",
+    "profile": "spicy!!",
+    "language": "ja_JP"
+  }
+}

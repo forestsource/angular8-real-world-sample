@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { myProfile } from './mockes/mock-profile';
 import { Profile } from './profile';
-import { HttpClient } from '@angular/common/http';
+
+import { environment } from "../../environments/environment";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +20,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProfileService {
-  profileUrl = '/profiles/1';
+  path = 'profile'
+  profileUrl = environment.apiUrl + '/profile';
 
   constructor(
     private http: HttpClient,

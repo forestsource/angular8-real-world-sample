@@ -16,7 +16,6 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService
   ) {}
 
-  profile: Profile;
   id = 1;
   password_hide = true;
 
@@ -64,8 +63,8 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     console.log('submit');
+    if (this.profileForm.invalid) { return false }
     let profile = this.formToModel(this.profileForm);
-    console.log(profile);
     this.profileService.putProfile(profile).subscribe(profile => (console.log('update')));
   }
 
