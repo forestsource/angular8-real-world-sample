@@ -19,7 +19,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProfileService {
-  profileUrl = '/profile';
+  profileUrl = '/profiles/1';
 
   constructor(
     private http: HttpClient,
