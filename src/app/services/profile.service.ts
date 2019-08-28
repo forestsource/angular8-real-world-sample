@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { environment } from "../../environments/environment";
 
 import { myProfile } from './mockes/mock-profile';
 import { Profile } from './profile';
 
-import { environment } from "../../environments/environment";
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     'Authorization': 'my-auth-token'
   })
 };
@@ -25,10 +23,11 @@ export class ProfileService {
 
   constructor(
     private http: HttpClient,
-  ) {}
+  ) { }
 
-  static getProfile(id: number): Observable<Profile> {
-    return of(myProfile);
+  public getProfile(id: number): Observable<Profile> {
+    // return of(myProfile);
+    return this.http.get<Profile>(this.profileUrl, httpOptions)
   }
 
   public putProfile(profile: Profile): Observable<Profile> {

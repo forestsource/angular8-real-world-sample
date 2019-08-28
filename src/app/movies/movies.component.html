@@ -1,9 +1,9 @@
 <mat-grid-list cols="12" rowHeight="1:1" [gutterSize]="10">
   <mat-grid-tile *ngFor="let movie of movies" [colspan]="3" [rowspan]="3">
     <div matRipple [matRippleCentered]="true">
-      <mat-card class="white-smoke">
+      <mat-card class="white-smoke" routerLink="/movies/{{movie.id}}">
         <mat-card-header> </mat-card-header>
-        <img mat-card-sm-image src="{{ movie.thumbnail }}" alt="movie-image" />
+        <img mat-card-sm-image src="{{apiUrl}}/{{ movie.thumbnail }}" alt="movie-image" />
         <mat-card-content> </mat-card-content>
         <mat-card-footer class="text-center">
           {{ movie.title }}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- import { PageEvent } from '@angular/material/paginator';
+import { environment } from "../../environments/environment";
 
  import { Movie } from '../services/movie';
  import { MovieService } from '../services/movie.service';
@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[];
+  apiUrl = environment.apiUrl
 
   constructor(private movieService: MovieService) {}
 

@@ -27,6 +27,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { NavimenuComponent } from './navimenu/navimenu.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MovieMessageComponent } from './movie-message/movie-message.component';
+import { MovieImageComponent } from './movie-image/movie-image.component';
 
 // @ts-ignore
 @NgModule({
@@ -58,7 +60,9 @@ import { ProfileComponent } from './profile/profile.component';
     MovieComponent,
     NavimenuComponent,
     SearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    MovieMessageComponent,
+    MovieImageComponent
   ],
   bootstrap: [AppComponent]
 })

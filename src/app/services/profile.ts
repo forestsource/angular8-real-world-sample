@@ -6,11 +6,11 @@ export class Profile {
   private language: string;
 
   constructor(
-    id: number,
-    loginId: string,
-    password: string,
-    profile: string,
-    language: string,
+    id?: number,
+    loginId?: string,
+    password?: string,
+    profile?: string,
+    language?: string,
   ){
     this.loginId = loginId;
     this.password = password;

@@ -18,12 +18,14 @@ export class ProfileComponent implements OnInit {
 
   id = 1;
   password_hide = true;
+  emptyProfile = new Profile();
 
   profileForm: FormGroup;
 
   ngOnInit() {
     console.log('init');
     this.initFormControl();
+    this.setValues(this.emptyProfile);
     this.getProfile();
   }
 
@@ -53,7 +55,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile(): void {
-    ProfileService.getProfile(this.id).subscribe(profile => (this.setValues(profile)));
+    this.profileService.getProfile(this.id).subscribe(profile => (this.setValues(profile)));
     console.log('getProfile');
   }
 

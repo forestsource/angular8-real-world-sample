@@ -10,10 +10,10 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'movies', component: MoviesComponent },
+  { path: 'movies', component: MoviesComponent, pathMatch: 'full' },
   { path: 'movies/:id', component: MovieComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
