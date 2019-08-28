@@ -1,8 +1,8 @@
+// Modules
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
@@ -16,12 +16,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
+
+// Components
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieComponent } from './movie/movie.component';
 import { MoviesComponent } from './movies/movies.component';
 import { NavimenuComponent } from './navimenu/navimenu.component';
@@ -29,6 +29,12 @@ import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovieMessageComponent } from './movie-message/movie-message.component';
 import { MovieImageComponent } from './movie-image/movie-image.component';
+
+// Guards
+import { AuthGuard } from './guard/auth.guard';
+
+// Services
+import { CookieService } from 'ngx-cookie-service';
 
 // @ts-ignore
 @NgModule({
@@ -63,6 +69,10 @@ import { MovieImageComponent } from './movie-image/movie-image.component';
     ProfileComponent,
     MovieMessageComponent,
     MovieImageComponent
+  ],
+  providers: [
+    AuthGuard,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

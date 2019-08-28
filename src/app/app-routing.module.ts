@@ -6,14 +6,15 @@ import { MovieComponent } from './movie/movie.component';
 import { MoviesComponent } from './movies/movies.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'movies', component: MoviesComponent, pathMatch: 'full' },
-  { path: 'movies/:id', component: MovieComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'profile', component: ProfileComponent, pathMatch: 'full' }
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'movies', component: MoviesComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'movies/:id', component: MovieComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, pathMatch: 'full', canActivate: [AuthGuard] }
 ];
 
 @NgModule({
