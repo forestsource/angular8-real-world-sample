@@ -1,0 +1,8 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+mat-toolbar {
+  background-color: white !important;
+}
+
+h2 {
+  padding-left: 5%;
+}

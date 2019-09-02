@@ -3,7 +3,8 @@
     "loginId": "test@example.jp",
     "password": "secure_password",
     "profile": "spicy!!",
-    "language": "ja_JP"
+    "language": "ja_JP",
+    "isAdmin": true
   },
   "movies": [
     {

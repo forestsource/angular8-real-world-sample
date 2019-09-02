@@ -26,7 +26,7 @@ export class MovieComponent implements OnInit {
   }
 
   getMovie(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.movieService.getMovie(id).subscribe(movie => {
         this.movie = movie;
         this.imagePath = environment.apiUrl + '/' + this.movie.thumbnail;

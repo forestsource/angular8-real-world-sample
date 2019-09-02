@@ -1,53 +1,45 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
-    <div class="login_id">
-        <mat-form-field>
-            <mat-label>Login ID</mat-label>
-            <mat-hint align="end">Not more then 60 characters.</mat-hint>
-            <input matInput
-                   id="loginId"
-                   placeholder="admin@example.jp"
-                   type="email"
-                   formControlName="loginId"
-                   >
-            <mat-error *ngIf="hasError('loginId', 'pattern')">invalid email format.</mat-error>
-            <mat-error *ngIf="hasError('loginId', 'maxLength')">over 60 characters.</mat-error>
-        </mat-form-field>
-    </div>
+<app-main-title title="profile" iconName="fa-user"></app-main-title>
+<mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+        <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+            <div class="login_id">
+                <mat-form-field>
+                    <mat-label>Login ID</mat-label>
+                    <mat-hint align="end">Not more then 60 characters.</mat-hint>
+                    <input matInput id="loginId" placeholder="admin@example.jp" type="email" formControlName="loginId">
+                    <mat-error *ngIf="hasError('loginId', 'pattern')">invalid email format.</mat-error>
+                    <mat-error *ngIf="hasError('loginId', 'maxLength')">over 60 characters.</mat-error>
+                </mat-form-field>
+            </div>
 
-    <div class="password">
-        <mat-form-field>
-            <input matInput
-                   id="password"
-                   placeholder="super secure password"
-                   type="password"
-                   formControlName="password"
-                   [type]="password_hide ? 'password' : 'text'"
-            required>
-            <mat-icon matSuffix
-                      (click)="password_hide = !password_hide">{{password_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </mat-form-field>
-    </div>
+            <div class="password">
+                <mat-form-field>
+                    <input matInput id="password" placeholder="super secure password" type="password"
+                        formControlName="password" [type]="password_hide ? 'password' : 'text'" required>
+                    <mat-icon matSuffix (click)="password_hide = !password_hide">
+                        {{password_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+            </div>
 
-    <div class="profile">
-        <mat-form-field>
-            <textarea matInput
-                      id="profile"
-                      placeholder="profile"
-                      formControlName="profile">
+            <div class="profile">
+                <mat-form-field>
+                    <textarea matInput id="profile" placeholder="profile" formControlName="profile">
             </textarea>
-        </mat-form-field>
-    </div>
+                </mat-form-field>
+            </div>
 
-    <div class="language">
-        <mat-form-field>
-            <mat-label>Language</mat-label>
-            <mat-select id="language" formControlName="language" required>
-                <mat-option value="ja_JP">日本語</mat-option>
-                <mat-option value="en_US">English</mat-option>
-                <mat-option value="eo_EO">Esperanto</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
+            <div class="language">
+                <mat-form-field>
+                    <mat-label>Language</mat-label>
+                    <mat-select id="language" formControlName="language" required>
+                        <mat-option value="ja_JP">日本語</mat-option>
+                        <mat-option value="en_US">English</mat-option>
+                        <mat-option value="eo_EO">Esperanto</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </mat-grid-tile>
+</mat-grid-list>

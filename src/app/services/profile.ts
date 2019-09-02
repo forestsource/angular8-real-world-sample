@@ -1,9 +1,10 @@
 export class Profile {
-  private id: Number;
-  private loginId: string;
-  private password: string;
-  private profile: string;
-  private language: string;
+  public id: number;
+  public loginId: string;
+  public password: string;
+  public profile: string;
+  public language: string;
+  public isAdmin: boolean;
 
   constructor(
     id?: number,
@@ -11,10 +12,12 @@ export class Profile {
     password?: string,
     profile?: string,
     language?: string,
+    isAdmin?: boolean,
   ){
     this.loginId = loginId;
     this.password = password;
     this.profile = profile;
     this.language = language;
+    this.isAdmin = isAdmin;
    }
 }

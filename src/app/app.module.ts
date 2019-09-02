@@ -20,55 +20,61 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 
 // Components
+import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieComponent } from './movie/movie.component';
+import { MovieImageComponent } from './movie-image/movie-image.component';
+import { MovieMessageComponent } from './movie-message/movie-message.component';
 import { MoviesComponent } from './movies/movies.component';
 import { NavimenuComponent } from './navimenu/navimenu.component';
-import { SearchComponent } from './search/search.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
-import { MovieMessageComponent } from './movie-message/movie-message.component';
-import { MovieImageComponent } from './movie-image/movie-image.component';
+import { SearchComponent } from './search/search.component';
 
 // Guards
 import { AuthGuard } from './guard/auth.guard';
 
 // Services
 import { CookieService } from 'ngx-cookie-service';
+import { MainTitleComponent } from './main-title/main-title.component';
 
 // @ts-ignore
 @NgModule({
   imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatGridListModule,
-    MatRippleModule,
-    MatPaginatorModule,
-    MatCardModule,
-    MatIconModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
+    BrowserModule,
     FlexLayoutModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
   ],
   declarations: [
+    AdminComponent,
     AppComponent,
     DashboardComponent,
-    MoviesComponent,
     MovieComponent,
-    NavimenuComponent,
-    SearchComponent,
-    ProfileComponent,
+    MovieImageComponent,
     MovieMessageComponent,
-    MovieImageComponent
+    MoviesComponent,
+    NavimenuComponent,
+    NotFoundComponent,
+    ProfileComponent,
+    SearchComponent,
+    MainTitleComponent,
   ],
   providers: [
     AuthGuard,

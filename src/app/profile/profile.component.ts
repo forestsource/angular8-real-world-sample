@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, Form } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { Profile } from '../services/profile';
 import { ProfileService } from '../services/profile.service';
+import { UserSharedService } from '../services/user-shared.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,16 +13,16 @@ import { ProfileService } from '../services/profile.service';
 })
 
 export class ProfileComponent implements OnInit {
-
-  constructor(
-    private profileService: ProfileService
-  ) {}
-
-  id = 1;
+  my = 0;
   password_hide = true;
   emptyProfile = new Profile();
-
+  private subscription: Subscription;
   profileForm: FormGroup;
+
+  constructor(
+    private profileService: ProfileService,
+    private userSharedService: UserSharedService
+  ) {}
 
   ngOnInit() {
     console.log('init');
@@ -55,8 +57,11 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile(): void {
-    this.profileService.getProfile(this.id).subscribe(profile => (this.setValues(profile)));
-    console.log('getProfile');
+    this.profileService.getProfile(this.my).subscribe(profile => {
+      this.setValues(profile);
+      this.userSharedService.onNotifySharedDataChanged(profile);
+      console.log('getProfile');
+    });
   }
 
   setValues(profile: Profile): void {
