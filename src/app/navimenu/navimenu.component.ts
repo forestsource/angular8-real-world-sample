@@ -33,9 +33,7 @@ export class NavimenuComponent implements OnInit {
   }
 
   isAdmin() {
-    console.info('isAdmin()');
     return true;
-    // this.profile.isAdmin;
   }
 
   subscibeProfile() {

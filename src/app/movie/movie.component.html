@@ -1,12 +1,19 @@
-<app-main-title></app-main-title>
-<mat-grid-list cols="5" rowHeight="100px">
-  <mat-grid-tile [colspan]="3" [rowspan]="2" [style.background]="red">
-      <app-movie-message [introductionText]="movie.text"></app-movie-message>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="red">
-      <app-movie-image [imagePath]="imagePath" [altText]="movie.thumbnail"></app-movie-image>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="5" [rowspan]="1" [style.background]="red">
-      controle-panel
-  </mat-grid-tile>
+<mat-grid-list cols="12" rowHeight="100px">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+        スター
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="9" [rowspan]="1"> </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2"> </mat-grid-tile>
+    <mat-grid-tile [colspan]="7" [rowspan]="2">
+        <app-movie-message [introductionText]="movie.text"></app-movie-message>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2"> </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="2">
+        <app-movie-image [imagePath]="imagePath" [altText]="movie.thumbnail"></app-movie-image>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="12" [rowspan]="1">
+        controle-panel
+    </mat-grid-tile>
 </mat-grid-list>

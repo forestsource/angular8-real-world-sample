@@ -1,31 +1,35 @@
 // Modules
-import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { HttpClientModule } from '@angular/common/http';
-import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MovieComponent } from './movie/movie.component';
+import { MainTitleComponent } from './main-title/main-title.component';
 import { MovieImageComponent } from './movie-image/movie-image.component';
 import { MovieMessageComponent } from './movie-message/movie-message.component';
+import { MovieComponent } from './movie/movie.component';
 import { MoviesComponent } from './movies/movies.component';
 import { NavimenuComponent } from './navimenu/navimenu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -37,7 +41,12 @@ import { AuthGuard } from './guard/auth.guard';
 
 // Services
 import { CookieService } from 'ngx-cookie-service';
-import { MainTitleComponent } from './main-title/main-title.component';
+
+// load Translate json
+// TODO: Group Application Initialize.
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 // @ts-ignore
 @NgModule({
@@ -61,6 +70,15 @@ import { MainTitleComponent } from './main-title/main-title.component';
     MatSelectModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    TranslateModule,
+    // TODO: Move somewhere nice.
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   declarations: [
     AdminComponent,
@@ -74,12 +92,13 @@ import { MainTitleComponent } from './main-title/main-title.component';
     NotFoundComponent,
     ProfileComponent,
     SearchComponent,
-    MainTitleComponent,
+    MainTitleComponent
   ],
   providers: [
     AuthGuard,
-    CookieService
+    CookieService,
+    TranslatePipe
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

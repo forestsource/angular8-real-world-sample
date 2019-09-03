@@ -1,0 +1,14 @@
+{
+    "title": "hululu",
+    "Navi": {
+        "home": "Home",
+        "search": "Serach",
+        "movie": "Movie"
+    },
+    "Movies": {
+        "title": "Movie list"
+    },
+    "Profile": {
+        "title": "Profile"
+    }
+}

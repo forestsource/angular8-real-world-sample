@@ -1,0 +1,14 @@
+{
+    "Title": "hululu",
+    "Navi": {
+        "home": "ホーム",
+        "search": "探す",
+        "movie": "ムービー"
+    },
+    "Movies": {
+        "title": "動画一覧"
+    },
+    "Profile": {
+        "title": "プロフィール"
+    }
+}

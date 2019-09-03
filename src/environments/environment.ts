@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://192.168.8.140:3000',
-  loginUrl: 'http://login.localhost'
+  loginUrl: 'http://login.localhost',
+  defaultLang: 'jp'
 };
 
 /*
