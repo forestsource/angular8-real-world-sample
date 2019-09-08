@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Profile } from '../services/profile';
 import { ProfileService } from '../services/profile.service';
 import { UserSharedService } from '../services/user-shared.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ import { UserSharedService } from '../services/user-shared.service';
 
 export class ProfileComponent implements OnInit {
   my = 0;
+  spinner = true;
   password_hide = true;
   emptyProfile = new Profile();
   private subscription: Subscription;
@@ -22,7 +24,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private userSharedService: UserSharedService
-  ) {}
+  ) { }
 
   ngOnInit() {
     console.log('init');
@@ -57,11 +59,24 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile(): void {
-    this.profileService.getProfile(this.my).subscribe(profile => {
-      this.setValues(profile);
-      this.userSharedService.onNotifySharedDataChanged(profile);
-      console.log('getProfile');
-    });
+    this.showSpinner();
+    this.profileService.getProfile(this.my)
+      .pipe(
+        finalize(() => this.hideSpinner())
+      )
+      .subscribe(profile => {
+        this.setValues(profile);
+        this.userSharedService.onNotifySharedDataChanged(profile);
+        console.log('getProfile');
+      });
+  }
+
+  showSpinner(): void {
+    this.spinner = true;
+  }
+
+  hideSpinner(): void {
+    this.spinner = false;
   }
 
   setValues(profile: Profile): void {
@@ -70,9 +85,18 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     console.log('submit');
+    this.showSpinner();
     if (this.profileForm.invalid) { return false }
     let profile = this.formToModel(this.profileForm);
-    this.profileService.putProfile(profile).subscribe(profile => (console.log('update')));
+    this.profileService.putProfile(profile)
+      .pipe(
+        finalize(() => this.hideSpinner())
+      )
+      .subscribe(profile => {
+        this.setValues(profile);
+        this.userSharedService.onNotifySharedDataChanged(profile);
+        console.log('putProfile');
+      });
   }
 
   private formToModel(form: FormGroup): Profile {
