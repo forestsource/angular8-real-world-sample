@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     // ログインしていない場合ログイン画面へ飛ばす
     if (!this.getSession()) {
-      let loginUrl = environment.loginUrl+ '/login';
+      let loginUrl = environment.loginUrl + '/login';
       window.location.href = loginUrl;
       return false;
     }

@@ -13,7 +13,7 @@ export class MovieComponent implements OnInit {
   @Input() id: Number;
 
   movie: Movie;
-  imagePath: String; 
+  imagePath: String;
 
   constructor(
     private movieService: MovieService,
@@ -26,11 +26,11 @@ export class MovieComponent implements OnInit {
   }
 
   getMovie(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.movieService.getMovie(id).subscribe(movie => {
-        this.movie = movie;
-        this.imagePath = environment.apiUrl + '/' + this.movie.thumbnail;
+      this.movie = movie;
+      this.imagePath = environment.apiUrl + '/' + this.movie.thumbnail;
     });
-    console.info(this.movie)
+    console.info(this.movie);
   }
 }

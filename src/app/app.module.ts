@@ -17,8 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -36,11 +35,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 
-// Guards
-import { AuthGuard } from './guard/auth.guard';
-
 // Services
 import { CookieService } from 'ngx-cookie-service';
+
+// Others
+import { AuthGuard } from './guard/auth.guard';
+import { httpInterceptorProviders } from './http-interceptor/http-interceptor-manager';
 
 // load Translate json
 // TODO: Group Application Initialize.
@@ -97,6 +97,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     AuthGuard,
     CookieService,
+    httpInterceptorProviders,
     TranslatePipe
   ],
   bootstrap: [AppComponent]
