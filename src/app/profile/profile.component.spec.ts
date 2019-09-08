@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProfileComponent } from './profile.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MainTitleComponent } from '../main-title/main-title.component';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -8,9 +9,10 @@ describe('ProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
+      declarations: [ProfileComponent],
+      providers: [MatGridListModule, MainTitleComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +21,8 @@ describe('ProfileComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('load', () => {
     expect(component).toBeTruthy();
   });
+
 });

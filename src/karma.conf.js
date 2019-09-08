@@ -21,11 +21,18 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],
+    // レポートを80%以上であることを強制する。
+    // thresholds: {
+    //   statements: 80,
+    //   lines: 80,
+    //   branches: 80,
+    //   functions: 80
+    // },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
     singleRun: false
   });
 };

@@ -1,6 +1,6 @@
 // Modules
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatLabelModule } from '@angular/material/label';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -63,6 +64,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
+    MatLabelModule,
     MatInputModule,
     MatMenuModule,
     MatPaginatorModule,
@@ -100,6 +102,7 @@ export function createTranslateLoader(http: HttpClient) {
     httpInterceptorProviders,
     TranslatePipe
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
