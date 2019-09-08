@@ -38,7 +38,8 @@ export class ProfileComponent implements OnInit {
       loginId: new FormControl('', [
         Validators.required,
         Validators.pattern('[^ @]*@[^ @]*'),
-        Validators.maxLength(30)
+        Validators.maxLength(30),
+        Validators.minLength(8)
       ]),
       password: new FormControl('', [
         Validators.required,

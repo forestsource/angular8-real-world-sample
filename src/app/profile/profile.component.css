@@ -1,3 +1,7 @@
 .email {
   flex-direction: column;
 }
+
+mat-form-field {
+  padding-bottom: 10px;
+}

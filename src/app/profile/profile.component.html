@@ -5,10 +5,10 @@
             <div class="login_id">
                 <mat-form-field>
                     <mat-label>Login ID</mat-label>
-                    <mat-hint align="end">Not more then 60 characters.</mat-hint>
-                    <input matInput id="loginId" placeholder="admin@example.jp" type="email" formControlName="loginId">
+                    <input matInput id="loginId" placeholder="admin@example.jp" type="email" formControlName="loginId" required>
                     <mat-error *ngIf="hasError('loginId', 'pattern')">invalid email format.</mat-error>
-                    <mat-error *ngIf="hasError('loginId', 'maxLength')">over 60 characters.</mat-error>
+                    <mat-error *ngIf="hasError('loginId', 'maxlength')">over 60 characters.</mat-error>
+                    <mat-error *ngIf="hasError('loginId', 'minlength')">require 8 length.</mat-error>
                 </mat-form-field>
             </div>
 
@@ -16,6 +16,7 @@
                 <mat-form-field>
                     <input matInput id="password" placeholder="super secure password" type="password"
                         formControlName="password" [type]="password_hide ? 'password' : 'text'" required>
+                    <mat-error *ngIf="hasError('password', 'minlength')">require 8 length.</mat-error>
                     <mat-icon matSuffix (click)="password_hide = !password_hide">
                         {{password_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </mat-form-field>
