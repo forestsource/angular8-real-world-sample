@@ -74,7 +74,9 @@
       </mat-icon>
     </button>
     <mat-menu #notify="matMenu">
-      <p>新着連絡</p>
+      <div *ngFor="let notification of (notificationService.notificationPoller$ |async)">
+        <app-notification [notification]="notification"></app-notification>
+      </div>
     </mat-menu>
 
     <button mat-icon-button routerLink="/profile">

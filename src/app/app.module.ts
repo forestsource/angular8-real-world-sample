@@ -10,7 +10,6 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLabelModule } from '@angular/material/label';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -42,6 +41,7 @@ import { CookieService } from 'ngx-cookie-service';
 // Others
 import { AuthGuard } from './guard/auth.guard';
 import { httpInterceptorProviders } from './http-interceptor/http-interceptor-manager';
+import { NotificationComponent } from './notification/notification.component';
 
 // load Translate json
 // TODO: Group Application Initialize.
@@ -64,7 +64,6 @@ export function createTranslateLoader(http: HttpClient) {
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
-    MatLabelModule,
     MatInputModule,
     MatMenuModule,
     MatPaginatorModule,
@@ -94,7 +93,8 @@ export function createTranslateLoader(http: HttpClient) {
     NotFoundComponent,
     ProfileComponent,
     SearchComponent,
-    MainTitleComponent
+    MainTitleComponent,
+    NotificationComponent
   ],
   providers: [
     AuthGuard,

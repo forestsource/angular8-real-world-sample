@@ -10,5 +10,12 @@
     },
     "Profile": {
         "title": "Profile"
+    },
+    "Notifications": {
+        "movies": {
+            "new": "Recommended {{value}} movies.",
+            "update": "Update movie info into your watch list.",
+            "expire": "This Movie is over after {{value}} days."
+        }
     }
 }

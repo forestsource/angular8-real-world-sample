@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { ProfileService } from '../services/profile.service';
 import { UserSharedService } from '../services/user-shared.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-navimenu',
@@ -17,12 +18,14 @@ export class NavimenuComponent implements OnInit {
 
   constructor(
     private userSharedService: UserSharedService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private notificationService: NotificationService
     ) { }
 
   ngOnInit() {
     this.subscibeProfile();
     this.getProfile();
+    this.notificationService.periodicallyCheck();
   }
 
   getProfile() {

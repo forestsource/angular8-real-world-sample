@@ -5,6 +5,11 @@
     "profile": "spicy!!",
     "language": "ja_JP"
   },
+  "notifications": [
+    {"id": "1", "msg": "Notifications.movies.new", "value": "5" },
+    {"id": "2", "msg": "Notifications.movies.update", "value": "" },
+    {"id": "3", "msg": "Notifications.movies.expire", "value": "1" }
+  ],
   "movies": [
     {
       "id": 1,
