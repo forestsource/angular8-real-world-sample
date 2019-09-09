@@ -16,7 +16,6 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.info(this.notification.msg);
   }
 
 }

@@ -13,9 +13,8 @@ export class NotificationService extends BaseService {
   url = environment.apiUrl + '/notifications';
   GET_INTERVAL = 3000;
 
-  notificationPoller$: Observable<Notification[]>;
+  notificationPoller$: Observable<any>;
   load$ = new BehaviorSubject('');
-  notifications: Notification[];
 
   constructor(
     private http: HttpClient
@@ -24,22 +23,19 @@ export class NotificationService extends BaseService {
   }
 
   periodicallyCheck(): void {
-    console.info('set Notification timer');
     this.notificationPoller$ = this.load$.pipe(
       switchMap(_ => timer(0, this.GET_INTERVAL).pipe(
         concatMap(_ => this.getNotification()),
-        map((response: Notification[]) => this.notifications = response)
+        map((response: Notification) => response)
       ))
     );
   }
 
   errorHandler(error: any, source: Observable<any>) {
-    console.info('error', error);
     return of(error);
   }
 
   public getNotification(): Observable<Notification> {
-    console.info('call getNotifications');
     return this.http.get<Notification>(this.url)
       .pipe(
         catchError(this.errorHandler)
