@@ -23,6 +23,7 @@
  - https://angular.jp/guide/http
 ## HTTPリクエスト
 ## interceptor
+ - https://github.com/forestsource/angular8-real-world-sample/blob/master/src/app/http-interceptor/http-error-interceptor.ts
 ## component間 データ共有
 https://github.com/forestsource/angular8-real-world-sample/search?q=onNotifySharedDataChanged&unscoped_q=onNotifySharedDataChanged
 ## ローカルmock
